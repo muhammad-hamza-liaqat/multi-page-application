@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <>
             <div className="nav flex items-center justify-around pb-2 pt-1 md:pt-2 md:pb-4" style={{
-                background: "linear-gradient(to right, #704e6b, #6b9bd5, #18051C)"
+                background: "linear-gradient(to right, #704e6b, #6b9bd5, #e02d2d)"
             }}>
                 <div className='logo'>
                     <div>
