@@ -4,7 +4,7 @@ import AllNews from '../components/News/AllNews'
 export default function News() {
     return (
         <>
-            <div className='m-5 flex flex-wrap gap-10 justify-center'>
+            <div className='m-5 flex flex-wrap gap-10'>
                 {/* -> tag title author text */}
                 <AllNews tag="Phone" title="Samsung s24 ultra" author="Samsung electronics" text="The samsung is likely to decrease the price of its phone samsung galaxy s24 ultra" />
                 <AllNews tag="World" title="War" author="James A.A" text="The world is being moved to start the world war-4" />
