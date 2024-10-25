@@ -19,7 +19,9 @@ const bull = (
 export default function AllNews({ tag, title, author, text, id }) {
     const navigation = useNavigate()
     const handleClick = () => {
-        navigation(`/news/${id}`)
+        navigation(`/news/${id}`, {
+            state: { id, tag, title, author, text }
+        })
     }
     return (
         <>
