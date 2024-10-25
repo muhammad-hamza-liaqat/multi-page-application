@@ -18,7 +18,7 @@ const bull = (
 export default function AllNews() {
     return (
         <>
-            <Card sx={{ minWidth: 300, maxWidth: 400, flex: '1 1 300px', margin: '8px', backgroundColor: '#f5f5f5', boxShadow: 3, padding: 2, borderRadius: '8px' }}>
+            <Card sx={{ minWidth: 275, maxWidth: 359, flex: '1 1 300px', margin: '5px', backgroundColor: '#f5f5f5', boxShadow: 3, padding: 1, borderRadius: '14px' }}>
                 <CardContent>
                     <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
                         HeadLine
