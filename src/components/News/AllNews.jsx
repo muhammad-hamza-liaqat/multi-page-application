@@ -15,20 +15,20 @@ const bull = (
     </Box>
 );
 
-export default function AllNews() {
+export default function AllNews({ tag, title, author, text }) {
     return (
         <>
             <Card sx={{ minWidth: 275, maxWidth: 359, flex: '1 1 300px', margin: '5px', backgroundColor: '#f5f5f5', boxShadow: 3, padding: 1, borderRadius: '14px' }}>
                 <CardContent>
                     <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                        HeadLine
+                        {tag}
                     </Typography>
                     <Typography variant="h5" component="div">
-                        Is Pakistan going to default?
+                        {title}
                     </Typography>
-                    <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>author: Hamza</Typography>
+                    <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>{author}</Typography>
                     <Typography variant="body2">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam, vitae. Explicabo impedit necessitatibus deserunt harum a praesentium expedita modi dolor ea ratione. Praesentium, suscipit dolores delectus saepe architecto omnis enim?
+                        {text}
                         <br />
                     </Typography>
                 </CardContent>
@@ -41,3 +41,6 @@ export default function AllNews() {
 
     );
 }
+
+// props
+// tag title author text
