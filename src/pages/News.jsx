@@ -13,6 +13,7 @@ export default function News() {
                 <AllNews id="new_id_105" tag="Construction" title="GS Mall" author="Sh.ali69" text="GS Mall will be continued to start" />
                 <AllNews id="new_id_106" tag="Lenovo" title="Lenovo Laptop" author="Hamza Liaqat" text="Lenovo to start to manufacture laptops officially in Pakistan." />
                 <AllNews id="new_id_107" tag="US" title="Trump shoot" author="Mirza" text="Attack on Trump during this campaign in Los Angeles" />
+                <AllNews id="65fd2d85f36382e56fcabb54" tag="Hamza" title="Test" author="Mirza" text="testing news" />
             </div>
         </>
     );
