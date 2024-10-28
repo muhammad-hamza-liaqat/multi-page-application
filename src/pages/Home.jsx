@@ -1,5 +1,5 @@
 import React from 'react'
-
+import CounterCom from "../components/CounterCom"
 export default function Home() {
     return (
         <>
