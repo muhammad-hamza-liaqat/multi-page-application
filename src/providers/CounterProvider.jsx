@@ -1,5 +1,5 @@
-// import React, { useEffect, useState } from "react";
-// import CounterContext from "../context/CounterContext";
+import React, { useEffect, useState } from "react";
+import CounterContext from "../context/CounterContext";
 
 // export const CounterProvider = ({ children }) => {
 //     const [count, setCount] = useState(0);
@@ -23,8 +23,6 @@
 //     );
 // };
 
-import React, { useEffect, useState } from "react";
-import CounterContext from "../context/CounterContext";
 
 export const CounterProvider = ({ children }) => {
     const [count, setCount] = useState(0);
