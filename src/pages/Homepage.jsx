@@ -8,7 +8,7 @@ export default function Homepage() {
     <>
       <Navbar />
       <NameComponent name={"Hamza"} />
-      <ResultComponent marks={90} subject={"Maths"} />
+      <ResultComponent marks={90} subject={"Javascript"} />
     </>
   )
 }
