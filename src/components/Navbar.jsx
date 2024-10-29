@@ -1,5 +1,5 @@
 import React from 'react'
-import car from "../../assets/car.svg"
+import car from "../assets/car.svg"
 import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
