@@ -6,7 +6,7 @@ export const CounterProvider = ({ children }) => {
     // 
     useEffect(() => {
         console.log("value changed")
-    }, [count])
+    }, [])
 
     const increase = () => {
         setCount((prevCount) => prevCount + 1);
