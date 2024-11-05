@@ -1,6 +1,6 @@
 // import './App.css'
 import { BrowserRouter as Router } from "react-router-dom"
-import MyAppRoutes from "./routes/myAppRoutes"
+import MyAppRoutes from "./routes/MyAppRoutes"
 import { CounterProvider } from "./providers/counterProvider"
 function App() {
 
