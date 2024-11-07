@@ -6,33 +6,31 @@ export default function Table() {
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('expenses')) || [];
         setData(storedData);
-    }, []);
+    }, [data]);
 
     return (
         <div className="p-5">
-            <div className="overflow-x-auto">
-                <table className="min-w-full bg-white border border-gray-300">
-                    <thead>
+            <div className="mx-auto w-full max-w-3xl overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+                <table className="min-w-full bg-white">
+                    <thead className="bg-gray-100 border-b">
                         <tr>
-                            <th className="py-2 px-4 border-b text-xs md:text-sm">ID</th>
-                            <th className="py-2 px-4 border-b text-xs md:text-sm">Name</th>
-                            <th className="py-2 px-4 border-b text-xs md:text-sm">Amount</th>
-                            <th className="py-2 px-4 border-b text-xs md:text-sm">Category</th>
+                            <th className="py-3 px-4 text-left text-sm font-medium text-gray-700">Name</th>
+                            <th className="py-3 px-4 text-left text-sm font-medium text-gray-700">Amount</th>
+                            <th className="py-3 px-4 text-left text-sm font-medium text-gray-700">Category</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.length > 0 ? (
                             data.map((expense, index) => (
-                                <tr key={index} className="text-center">
-                                    <td className="py-2 px-4 border-b text-xs md:text-sm">{index + 1}</td>
-                                    <td className="py-2 px-4 border-b text-xs md:text-sm">{expense.name}</td>
-                                    <td className="py-2 px-4 border-b text-xs md:text-sm">{expense.amount} PKR</td>
-                                    <td className="py-2 px-4 border-b text-xs md:text-sm">{expense.expenseCategory}</td>
+                                <tr key={index} className="border-b hover:bg-gray-50">
+                                    <td className="py-3 px-4 text-sm text-gray-800">{expense.name}</td>
+                                    <td className="py-3 px-4 text-sm text-gray-800">{expense.amount} PKR</td>
+                                    <td className="py-3 px-4 text-sm text-gray-800">{expense.expenseCategory}</td>
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="4" className="py-2 px-4 text-center text-xs md:text-sm">
+                                <td colSpan="3" className="py-3 px-4 text-center text-sm text-gray-500">
                                     No data available
                                 </td>
                             </tr>
