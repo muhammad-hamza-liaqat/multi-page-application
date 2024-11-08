@@ -10,6 +10,8 @@ export default function Summarybar() {
         expenseCategory: ''
     });
 
+    const allowedCategories = ['Medical Expense', 'Personal', 'Food Expense', 'Utilities', 'Others'];
+
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
@@ -74,15 +76,20 @@ export default function Summarybar() {
                             </div>
                             <div className="mb-4">
                                 <label>Category</label>
-                                <input
-                                    type="text"
+                                <select
                                     name="expenseCategory"
                                     value={formData.expenseCategory}
                                     onChange={handleChange}
                                     className="w-full p-2 border rounded"
-                                    placeholder="Enter category"
                                     required
-                                />
+                                >
+                                    <option value="">Select a category</option>
+                                    {allowedCategories.map((category) => (
+                                        <option key={category} value={category}>
+                                            {category}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="flex justify-end space-x-2">
                                 <button
