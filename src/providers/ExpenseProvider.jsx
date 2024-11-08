@@ -4,6 +4,7 @@ import ExpenseContext from '../context/ExpenseContext';
 export default function ExpenseProvider({ children }) {
     const [expense, setExpense] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
+    const allowedCategories = ['Medical Expense', 'Personal', 'Food Expense', 'Utilities', 'Others'];
 
     useEffect(() => {
         const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -26,7 +27,7 @@ export default function ExpenseProvider({ children }) {
     };
 
     return (
-        <ExpenseContext.Provider value={{ expense, totalAmount, addExpense }}>
+        <ExpenseContext.Provider value={{ expense, totalAmount, addExpense, allowedCategories }}>
             {children}
         </ExpenseContext.Provider>
     );
