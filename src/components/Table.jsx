@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+// Table.js
+import React, { useContext } from 'react';
+import ExpenseContext from '../context/ExpenseContext';
 
 export default function Table() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const storedData = JSON.parse(localStorage.getItem('expenses')) || [];
-        setData(storedData);
-    }, [data]);
+    const { expense } = useContext(ExpenseContext);
 
     return (
         <div className="p-5">
@@ -14,25 +11,23 @@ export default function Table() {
                 <table className="min-w-full bg-white">
                     <thead className="bg-gray-100 border-b">
                         <tr>
-                            <th className="py-3 px-4 text-left text-sm font-medium text-gray-700">Name</th>
-                            <th className="py-3 px-4 text-left text-sm font-medium text-gray-700">Amount</th>
-                            <th className="py-3 px-4 text-left text-sm font-medium text-gray-700">Category</th>
+                            <th className="py-3 px-4 text-left">Name</th>
+                            <th className="py-3 px-4 text-left">Amount (PKR)</th>
+                            <th className="py-3 px-4 text-left">Category</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {data.length > 0 ? (
-                            data.map((expense, index) => (
+                        {expense.length > 0 ? (
+                            expense.map((item, index) => (
                                 <tr key={index} className="border-b hover:bg-gray-50">
-                                    <td className="py-3 px-4 text-sm text-gray-800">{expense.name}</td>
-                                    <td className="py-3 px-4 text-sm text-gray-800">{expense.amount} PKR</td>
-                                    <td className="py-3 px-4 text-sm text-gray-800">{expense.expenseCategory}</td>
+                                    <td className="py-3 px-4">{item.name}</td>
+                                    <td className="py-3 px-4">{item.amount}</td>
+                                    <td className="py-3 px-4">{item.expenseCategory}</td>
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="3" className="py-3 px-4 text-center text-sm text-gray-500">
-                                    No data available
-                                </td>
+                                <td colSpan="3" className="py-3 text-center">No expenses found</td>
                             </tr>
                         )}
                     </tbody>

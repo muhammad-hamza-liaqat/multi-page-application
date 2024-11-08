@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import ExpenseContext from '../context/ExpenseContext';
 
 export default function Summarybar() {
+    const { addExpense, totalAmount } = useContext(ExpenseContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         amount: '',
@@ -8,30 +10,21 @@ export default function Summarybar() {
         expenseCategory: ''
     });
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
-    const saveExpense = () => {
-        const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-        expenses.push(formData)
-        localStorage.setItem("expenses", JSON.stringify(expenses))
-
-        setFormData({
-            amount: '',
-            name: '',
-            expenseCategory: ''
-        });
-        closeModal();
+    const saveExpense = (e) => {
+        e.preventDefault();
+        if (formData.name && formData.amount && formData.expenseCategory) {
+            addExpense(formData);
+            setFormData({ amount: '', name: '', expenseCategory: '' });
+            closeModal();
+        }
     };
 
     return (
@@ -39,27 +32,24 @@ export default function Summarybar() {
             <div className="main flex justify-center mt-5 p-3">
                 <div className="w-full max-w-lg flex justify-between items-center">
                     <div>
-                        Balance: {100} PKR
+                        Balance: {totalAmount} PKR
                     </div>
-                    <div>
-                        <button
-                            className="p-1 rounded-xl hover:bg-emerald-800 hover:text-white md:p-2 bg-slate-400 text-sm md:rounded-2xl md:hover:bg-gray-600"
-                            onClick={openModal}
-                        >
-                            Add Expense
-                        </button>
-                    </div>
+                    <button
+                        className="p-1 rounded-xl hover:bg-emerald-800 hover:text-white md:p-2 bg-slate-400 text-sm md:rounded-2xl md:hover:bg-gray-600"
+                        onClick={openModal}
+                    >
+                        Add Expense
+                    </button>
                 </div>
             </div>
 
-            {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                         <h2 className="text-xl font-bold mb-4">Add Expense</h2>
-                        <form>
+                        <form onSubmit={saveExpense}>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Amount</label>
+                                <label>Amount</label>
                                 <input
                                     type="number"
                                     name="amount"
@@ -67,10 +57,11 @@ export default function Summarybar() {
                                     onChange={handleChange}
                                     className="w-full p-2 border rounded"
                                     placeholder="Enter amount"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Name</label>
+                                <label>Name</label>
                                 <input
                                     type="text"
                                     name="name"
@@ -78,17 +69,19 @@ export default function Summarybar() {
                                     onChange={handleChange}
                                     className="w-full p-2 border rounded"
                                     placeholder="Enter name"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Expense Category</label>
+                                <label>Category</label>
                                 <input
                                     type="text"
                                     name="expenseCategory"
                                     value={formData.expenseCategory}
                                     onChange={handleChange}
                                     className="w-full p-2 border rounded"
-                                    placeholder="Enter expense category"
+                                    placeholder="Enter category"
+                                    required
                                 />
                             </div>
                             <div className="flex justify-end space-x-2">
@@ -100,9 +93,8 @@ export default function Summarybar() {
                                     Cancel
                                 </button>
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="bg-emerald-600 text-white p-2 rounded hover:bg-emerald-700"
-                                    onClick={saveExpense}
                                 >
                                     Save
                                 </button>
