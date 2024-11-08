@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import ExpenseContext from '../context/ExpenseContext';
 
 export default function Table() {
-    const { expense, allowedCategories } = useContext(ExpenseContext); // Access allowedCategories from context
+    const { expense, allowedCategories } = useContext(ExpenseContext); 
     const [filter, setFilter] = useState('');
 
     const handleFilterChange = (e) => {
