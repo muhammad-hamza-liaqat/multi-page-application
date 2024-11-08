@@ -34,6 +34,9 @@ const Calculator = () => {
         } else if (key === 'Backspace') {
             setInput((prev) => prev.slice(0, -1));
         }
+        else {
+            alert("invalid character pressed. only press valid characters")
+        }
     };
 
     useEffect(() => {
