@@ -1,10 +1,11 @@
 import './App.css'
+import CalculatorPage from './pages/CalculatorPage'
 
 function App() {
 
   return (
     <>
-      <p>hello</p>
+      <CalculatorPage />
     </>
   )
 }
