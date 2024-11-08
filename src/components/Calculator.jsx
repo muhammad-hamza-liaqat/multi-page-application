@@ -48,7 +48,7 @@ const Calculator = () => {
 
     return (
         <div className="max-w-xs mx-auto p-5 border border-gray-400 rounded-lg shadow-lg mt-10">
-            <h2 className="text-center text-2xl font-semibold mb-4">Simple Calculator</h2>
+            {/* <h2 className="text-center text-2xl font-semibold mb-4">Simple Calculator</h2> */}
             <div className="bg-gray-100 text-right p-4 rounded mb-3 text-2xl">
                 {input || result}
             </div>
