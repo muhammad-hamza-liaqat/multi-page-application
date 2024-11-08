@@ -37,7 +37,7 @@ export default function Summarybar() {
                         Balance: {totalAmount} PKR
                     </div>
                     <button
-                        className="p-1 rounded-xl hover:bg-emerald-800 hover:text-white md:p-2 bg-slate-400 text-sm md:rounded-2xl md:hover:bg-gray-600"
+                        className="p-1 rounded-xl hover:bg-emerald-800 hover:text-white md:p-3 bg-slate-400 text-sm md:rounded-2xl md:hover:bg-gray-600"
                         onClick={openModal}
                     >
                         Add Expense
