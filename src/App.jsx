@@ -4,6 +4,7 @@ function App() {
 
   return (
     <>
+      <p className='bg-slate-400'>testing</p>
     </>
   )
 }
