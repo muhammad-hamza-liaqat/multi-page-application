@@ -2,9 +2,12 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import CalculatorProvider from './providers/CalculatorProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
-  <App />
+  <CalculatorProvider>
+    <App />
+  </CalculatorProvider>
   // </StrictMode>,
 )
