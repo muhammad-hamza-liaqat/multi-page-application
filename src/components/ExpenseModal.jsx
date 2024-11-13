@@ -1,12 +1,18 @@
 // ExpenseModal.js
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import CalculatorContext from '../context/CalculatorContext';
 
 const ExpenseModal = ({ isOpen, onClose }) => {
     const { state, dispatch } = useContext(CalculatorContext);
-    // default to MISC
-    const [expenseType, setExpenseType] = useState('MISC');
+    const [expenseType, setExpenseType] = useState('Utilities');
     const [expenseName, setExpenseName] = useState('');
+    const [expenseAmount, setExpenseAmount] = useState('');
+
+    useEffect(() => {
+        if (isOpen) {
+            setExpenseAmount(state.displayValue);
+        }
+    }, [isOpen]);
 
     const handleSave = () => {
         dispatch({
@@ -14,13 +20,13 @@ const ExpenseModal = ({ isOpen, onClose }) => {
             payload: {
                 type: expenseType,
                 name: expenseName,
-                amount: parseFloat(state.displayValue),
+                amount: parseFloat(expenseAmount),
             },
         });
 
-
-        setExpenseType('MISC');
+        setExpenseType('Utilities');
         setExpenseName('');
+        setExpenseAmount('');
 
         onClose();
     };
@@ -32,6 +38,7 @@ const ExpenseModal = ({ isOpen, onClose }) => {
             <div className="bg-white p-4 rounded shadow-lg max-w-md w-full">
                 <h2 className="text-xl font-semibold mb-4">Add Expense</h2>
 
+                {/* Expense Type Dropdown */}
                 <label className="block mb-2">Expense Type</label>
                 <select
                     value={expenseType}
@@ -44,6 +51,7 @@ const ExpenseModal = ({ isOpen, onClose }) => {
                     <option value="MISC">MISC</option>
                 </select>
 
+                {/* Expense Name Input */}
                 <label className="block mb-2">Expense Name</label>
                 <input
                     type="text"
@@ -52,10 +60,11 @@ const ExpenseModal = ({ isOpen, onClose }) => {
                     className="w-full p-2 border border-gray-300 rounded mb-4"
                 />
 
+                {/* Read-Only Amount Field */}
                 <label className="block mb-2">Amount</label>
                 <input
                     type="text"
-                    value={state.displayValue}
+                    value={expenseAmount}
                     readOnly
                     className="w-full p-2 border border-gray-300 rounded mb-4 bg-gray-100 cursor-not-allowed"
                 />
