@@ -1,5 +1,4 @@
-// CalculatorProvider.js
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import CalculatorContext from '../context/CalculatorContext';
 
 const initialState = {
@@ -7,7 +6,7 @@ const initialState = {
     firstValue: null,
     waitingForSecondValue: false,
     operator: null,
-    expenses: [],
+    expenses: JSON.parse(localStorage.getItem('expenses')) || [],
 };
 
 const calculatorReducer = (state, action) => {
@@ -35,7 +34,7 @@ const calculatorReducer = (state, action) => {
                 operator: action.payload,
             };
         case "CLEAR":
-            return initialState;
+            return { ...state, displayValue: "0" };
         case "CALCULATE":
             if (state.operator && state.firstValue != null) {
                 const result = eval(`${state.firstValue} ${state.operator} ${state.displayValue}`);
@@ -49,9 +48,11 @@ const calculatorReducer = (state, action) => {
             }
             return state;
         case "ADD_EXPENSE":
+            const updatedExpenses = [...state.expenses, action.payload];
+            localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
             return {
                 ...state,
-                expenses: [...state.expenses, action.payload],
+                expenses: updatedExpenses,
                 displayValue: "0",
             };
         default:
