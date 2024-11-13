@@ -4,7 +4,8 @@ import CalculatorContext from '../context/CalculatorContext';
 
 const ExpenseModal = ({ isOpen, onClose }) => {
     const { state, dispatch } = useContext(CalculatorContext);
-    const [expenseType, setExpenseType] = useState('');
+    // deafult to utilities
+    const [expenseType, setExpenseType] = useState('Utilities');
     const [expenseName, setExpenseName] = useState('');
 
     const handleSave = () => {
@@ -26,14 +27,20 @@ const ExpenseModal = ({ isOpen, onClose }) => {
             <div className="bg-white p-4 rounded shadow-lg max-w-md w-full">
                 <h2 className="text-xl font-semibold mb-4">Add Expense</h2>
 
+                {/* Expense Type Dropdown */}
                 <label className="block mb-2">Expense Type</label>
-                <input
-                    type="text"
+                <select
                     value={expenseType}
                     onChange={(e) => setExpenseType(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded mb-4"
-                />
+                >
+                    <option value="Utilities">Utilities</option>
+                    <option value="Food">Food</option>
+                    <option value="Education">Education</option>
+                    <option value="MISC">MISC</option>
+                </select>
 
+                {/* Expense Name Input */}
                 <label className="block mb-2">Expense Name</label>
                 <input
                     type="text"
