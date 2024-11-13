@@ -1,10 +1,11 @@
 import './App.css'
+import HomePage from "./pages/HomePage"
 
 function App() {
 
   return (
     <>
-      <p className='bg-slate-400'>testing</p>
+      <HomePage />
     </>
   )
 }
